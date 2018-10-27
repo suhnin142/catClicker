@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#catlist li { cursor: pointer; }
+		#cat_image { display: none }
+		.show {display: block !important}
+	</style>
+</head>
+<body>
+	<h3>Please Click the cat name to change</h3>
+	<ul id="catlist">
+	</ul>
+	<img src="" alt="cute cat" id="cat_image"><br>
+	<span id="click_count"></span>
+	<script type="text/javascript">
+	const cats = [{
+	name: 'Cat A',
+	clickCount: 0,
+	url: 'https://lh5.ggpht.com/LfjkdmOKkGLvCt-VuRlWGjAjXqTBrPjRsokTNKBtCh8IFPRetGaXIpTQGE2e7ZCUaG2azKNkz38KkbM_emA=s0#w=640&h=454'
+	},
+	{
+	name: 'Cat B',
+	clickCount: 0,
+	url: 'https://lh3.ggpht.com/nlI91wYNCrjjNy5f-S3CmVehIBM4cprx-JFWOztLk7vFlhYuFR6YnxcT446AvxYg4Ab7M1Fy0twaOCWYcUk=s0#w=640&h=426'
+	},
+	{
+	name: 'Cat C',
+	clickCount: 0,
+	url: 'https://lh3.ggpht.com/kixazxoJ2ufl3ACj2I85Xsy-Rfog97BM75ZiLaX02KgeYramAEqlEHqPC3rKqdQj4C1VFnXXryadFs1J9A=s0#w=640&h=496'
+	},
+	{
+	name: 'Cat D',
+	clickCount: 0,
+	url: 'https://d17h27t6h515a5.cloudfront.net/topher/2017/March/58b8af2f_nd001-cat-clicker/nd001-cat-clicker.jpg'
+	},
+	{
+	name: 'Cat E',
+	clickCount: 0,
+	url: 'https://uploads.scratch.mit.edu/users/avatars/1385/1878.png'
+	}];
+
+	for (let cat of cats) {
+	   cat_name = cat.name;
+	   document.querySelector("#catlist").innerHTML += `<li onclick="showImage('${cat.name}')">${cat.name}</li>`;
+	}
+
+	function showImage(name) {
+		for (let cat of cats) {
+			if(cat.name === name){
+	            cat.clickCount += 1; 
+	            let selected_image = document.getElementById('cat_image');
+	            selected_image.src = cat.url;
+	            selected_image.className = 'show';
+	            document.getElementById('click_count').innerText = cat.name + '- Clicked Count : ' + cat.clickCount;
+	        }
+	    }
+	}
+
+	// var n =document.querySelectorAll('#catlist > li');
+	// for(let  clicked of n){
+	// 	clicked.onclick=function(){
+	// 		console.log(clicked);
+	// 		// window.alert("clicked");
+	// 		document.getElementByID("#show").innerHTML += `<li>${cat.name}</li>`;
+	// 	}
+	// }
+	</script>
+</body>
+</html>
